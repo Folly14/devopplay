@@ -1,0 +1,26 @@
+# Run Vagrant command:
+#    * Click on `view` and select `open terminal`
+#    * Run command `vagrant init`
+#    * New file in name `Vagrantfile` will get created automatically
+#    * open `Vagrantfile`
+#    * Delete all lines
+#    * Copy and paste the below code
+#    * Save the file
+#    * Use the `commands` given in `command section` to bring up VMs
+
+# Copy the below vagrant code to setup ubuntu virtual machine AND modify the machine name 
+
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.define "jokes" do |vm1|
+    vm1.vm.hostname = "jokes"
+    vm1.vm.box = "bento/ubuntu-20.04"
+    vm1.vm.network "private_network", ip: "192.168.33.10"
+    vm1.vm.provider "virtualbox" do |vb|
+      vb.name = "jokes"
+      vb.gui = false
+      vb.memory = "1024"
+    end
+  end
